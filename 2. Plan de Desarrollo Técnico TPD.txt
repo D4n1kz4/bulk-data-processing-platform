@@ -1,0 +1,337 @@
+Plan de Desarrollo Técnico
+
+API de Procesamiento Masivo de Datos
+(Bulk Data Processing Platform)
+
+ÍNDICE
+Objetivo del Documento
+Estrategia General de Desarrollo
+Fases del Proyecto
+Fase 1: Backend Foundation
+Fase 2: Frontend Shell
+Fase 3: Seguridad y Autenticación
+Fase 4: Microfrontend Customers
+Fase 5: Procesamiento Masivo CSV
+Fase 6: Microfrontend Imports
+Fase 7: Auditoría
+Fase 8: Microfrontend Audit
+Fase 9: Integración Final
+
+
+1. Objetivo del Documento
+
+Definir el orden de construcción de la plataforma, estableciendo fases, objetivos y entregables técnicos para desarrollar el sistema de forma progresiva, ordenada y funcional.
+
+Este documento servirá como guía práctica para transformar la arquitectura técnica en una implementación real.
+
+
+2. Estrategia General de Desarrollo
+
+El proyecto se desarrollará de manera incremental.
+Primero se construirá una base funcional y luego se integrarán los módulos avanzados.
+
+El orden general será:
+
+Backend funcional
+↓
+Frontend Shell
+↓
+Autenticación
+↓
+Primer microfrontend
+↓
+Procesamiento masivo
+↓
+Auditoría
+↓
+Integración final
+
+La prioridad será evitar sobrecargar el desarrollo inicial y avanzar por bloques funcionales comprobables.
+
+
+3. Fases del Proyecto
+
+El desarrollo se dividirá en las siguientes fases:
+
+Fase 1: Backend Foundation
+Fase 2: Frontend Shell
+Fase 3: Seguridad y Autenticación
+Fase 4: Microfrontend Customers
+Fase 5: Procesamiento Masivo CSV
+Fase 6: Microfrontend Imports
+Fase 7: Auditoría
+Fase 8: Microfrontend Audit
+Fase 9: Integración Final
+
+
+4. Fase 1: Backend Foundation
+
+Objetivo
+
+Construir la base inicial del backend utilizando Spring Boot y PostgreSQL.
+
+Tareas
+crear proyecto Spring Boot
+configurar estructura base del backend
+configurar conexión PostgreSQL
+configurar Docker Compose para base de datos
+crear entidad Customer
+crear Repository
+crear Service
+crear Controller
+implementar CRUD inicial
+configurar Swagger/OpenAPI
+probar endpoints desde Swagger o Postman
+Entregables
+backend levantado correctamente
+base de datos PostgreSQL conectada
+entidad Customer creada
+CRUD básico funcional
+Swagger disponible
+estructura base del proyecto creada
+
+
+5. Fase 2: Frontend Shell
+Objetivo
+
+Crear la aplicación principal Angular que actuará como contenedor de los microfrontends.
+
+Tareas
+crear proyecto Angular Shell
+configurar Angular Router
+configurar Angular Material
+crear layout principal
+crear menú de navegación
+crear rutas iniciales
+preparar estructura para cargar microfrontends
+crear pantalla inicial temporal
+Entregables
+Shell Angular funcionando
+layout principal creado
+navegación base disponible
+estructura preparada para microfrontends
+
+
+6. Fase 3: Seguridad y Autenticación
+Objetivo
+
+Implementar autenticación JWT en backend e integrar login inicial en el frontend Shell.
+
+Tareas Backend
+configurar Spring Security
+implementar login
+generar JWT
+implementar refresh token
+cifrar contraseñas con BCrypt
+crear roles base
+proteger endpoints
+Tareas Frontend
+crear pantalla login
+consumir endpoint de autenticación
+guardar token
+manejar sesión
+proteger rutas frontend
+agregar logout
+Entregables
+login funcional
+JWT generado correctamente
+endpoints protegidos
+rutas frontend protegidas
+sesión básica operativa
+
+
+7. Fase 4: Microfrontend Customers
+Objetivo
+
+Crear el primer microfrontend funcional para gestión de clientes.
+
+Tareas
+crear proyecto mfe-customers
+configurar Module Federation
+exponer módulo remoto
+consumir microfrontend desde Shell
+crear tabla de clientes
+consumir endpoint GET /api/customers
+implementar filtros
+implementar paginación
+crear formularios de creación y edición
+Entregables
+microfrontend cargado desde Shell
+listado de clientes funcional
+paginación operativa
+filtros básicos
+formularios conectados al backend
+
+
+8. Fase 5: Procesamiento Masivo CSV
+Objetivo
+
+Implementar procesamiento masivo de datos desde archivos CSV en el backend.
+
+Tareas
+crear módulo importer
+crear endpoint para carga CSV
+leer archivo recibido
+validar filas
+detectar duplicados
+procesar registros válidos
+registrar registros inválidos
+crear historial de importaciones
+generar resumen del procesamiento
+Entregables
+endpoint de carga CSV funcional
+validación por fila implementada
+procesamiento parcial
+historial de importaciones
+resumen de carga generado
+
+
+9. Fase 6: Microfrontend Imports
+Objetivo
+
+Crear microfrontend para carga de archivos y visualización de resultados de importación.
+
+Tareas
+crear proyecto mfe-imports
+configurar Module Federation
+cargar microfrontend desde Shell
+crear formulario de carga CSV
+consumir endpoint de importación
+mostrar resumen de procesamiento
+mostrar historial de importaciones
+mostrar errores de carga
+Entregables
+microfrontend Imports funcionando
+carga CSV desde frontend
+visualización de resultados
+historial visible
+errores mostrados al usuario
+
+
+10. Fase 7: Auditoría
+Objetivo
+
+Registrar acciones relevantes del sistema desde el backend.
+
+Tareas
+crear entidad AuditLog
+crear Repository
+crear Service
+registrar login
+registrar creación de clientes
+registrar modificación de clientes
+registrar eliminación lógica
+registrar importaciones
+crear endpoint de consulta de auditoría
+Entregables
+tabla de auditoría creada
+logs registrados automáticamente
+endpoint de auditoría funcional
+trazabilidad básica del sistema
+
+
+11. Fase 8: Microfrontend Audit
+Objetivo
+
+Crear microfrontend para visualizar acciones auditadas del sistema.
+
+Tareas
+crear proyecto mfe-audit
+configurar Module Federation
+cargar microfrontend desde Shell
+consumir endpoint GET /api/audit
+crear tabla de logs
+implementar filtros de actividad
+mostrar usuario, acción y fecha
+Entregables
+microfrontend Audit funcionando
+logs visibles desde frontend
+filtros básicos
+integración con backend
+
+
+12. Fase 9: Integración Final
+Objetivo
+
+Unificar backend, frontend Shell y microfrontends en una versión funcional integrada.
+
+Tareas
+revisar rutas frontend
+revisar configuración Module Federation
+revisar CORS
+revisar JWT entre frontend y backend
+probar flujo completo
+documentar ejecución local
+preparar README
+preparar capturas
+probar carga CSV real
+revisar errores principales
+Entregables
+sistema fullstack funcionando
+backend integrado con frontend
+microfrontends cargados correctamente
+flujo completo validado
+documentación inicial lista
+
+
+13. Prioridades Técnicas
+Prioridad Alta
+backend funcional
+conexión PostgreSQL
+CRUD Customer
+Swagger
+Shell Angular
+Module Federation básico
+JWT
+microfrontend Customers
+Prioridad Media
+carga CSV
+historial de importaciones
+auditoría
+microfrontend Imports
+microfrontend Audit
+Prioridad Baja
+estilos avanzados
+dashboard visual complejo
+validaciones frontend avanzadas
+optimizaciones profundas
+carga XLSX
+
+
+14. Riesgos Técnicos
+Riesgo 1: Configuración de Module Federation
+
+Puede requerir ajustes finos entre Shell y microfrontends.
+
+Riesgo 2: CORS y JWT
+
+La comunicación entre frontend y backend puede requerir configuración específica.
+
+Riesgo 3: Procesamiento CSV
+
+Archivos muy grandes pueden requerir optimización posterior.
+
+Riesgo 4: Sincronización Frontend/Backend
+
+Los contratos de API deben mantenerse claros para evitar errores de integración.
+
+Riesgo 5: Alcance excesivo
+
+Agregar demasiadas tecnologías al inicio puede retrasar la construcción del núcleo funcional.
+
+
+15. Resultado Esperado
+
+Al finalizar el desarrollo, el proyecto contará con:
+
+backend Spring Boot funcional
+base PostgreSQL conectada
+autenticación JWT
+CRUD de clientes
+carga masiva CSV
+auditoría
+frontend Angular Shell
+microfrontend Customers
+microfrontend Imports
+microfrontend Audit
+documentación técnica base

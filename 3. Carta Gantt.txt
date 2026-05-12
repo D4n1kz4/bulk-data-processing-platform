@@ -1,0 +1,34 @@
+Carta Gantt
+
+API de Procesamiento Masivo de Datos
+(Bulk Data Processing Platform)
+
+Línea de Tiempo General
+Fase	Actividad			Duración Estimada	Dependencia		Día
+Fase 1	Backend Foundation		1 a 2 días		Inicio del proyecto	12 y 13 -05
+Fase 2	Frontend Shell			1 día			Fase 1
+Fase 3	Seguridad y Autenticación	1 a 2 días		Fase 1 y 2
+Fase 4	Microfrontend Customers		2 días			Fase 2 y 3
+Fase 5	Procesamiento Masivo CSV	1 a 2 días		Fase 1 y 3
+Fase 6	Microfrontend Imports		1 día			Fase 5
+Fase 7	Auditoría Backend		1 día			Fase 1
+Fase 8	Microfrontend Audit		1 día			Fase 7
+Fase 9	Integración Final		1 a 2 días		Todas las anteriores
+
+
+Tiempo Total Estimado
+
+MVP Técnico Funcional
+10 a 14 días aproximadamente.
+
+Consideraciones
+
+La duración puede variar dependiendo de:
+
+experiencia previa con Module Federation
+complejidad de validaciones CSV
+integración frontend/backend
+configuración de seguridad JWT
+ajustes de Docker y PostgreSQL
+resolución de conflictos CORS
+

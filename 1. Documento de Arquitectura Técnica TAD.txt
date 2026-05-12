@@ -1,0 +1,358 @@
+Documento de Arquitectura Técnica (TAD)
+
+API de Procesamiento Masivo de Datos
+(Bulk Data Processing Platform)
+
+ÍNDICE
+1.Descripción General
+2.Enfoque del Proyecto
+3.Arquitectura General del Sistema
+4.Arquitectura Frontend
+5.Arquitectura Backend
+6.Estructura del Proyecto
+7.Tecnologías Utilizadas
+8.Funcionalidades del Sistema
+9.Endpoints Principales
+10.Seguridad
+11.Procesamiento Masivo de Datos
+12.Características Técnicas
+13.Resultado Esperado
+
+
+PROYECTO
+
+1. Descripción General
+Objetivo
+
+Desarrollar una plataforma fullstack orientada al procesamiento masivo de datos utilizando:
+
+Spring Boot
+Angular
+Microfrontends
+PostgreSQL
+
+El proyecto tendrá como objetivo principal demostrar conocimientos técnicos relacionados con:
+
+arquitectura backend enterprise
+microfrontends
+seguridad
+procesamiento masivo de datos
+diseño REST API
+integración frontend/backend
+validaciones
+auditoría
+paginación
+modularización frontend
+buenas prácticas de desarrollo
+
+
+2. Enfoque del Proyecto
+
+El proyecto estará orientado principalmente a:
+
+fortalecer portafolio profesional
+demostrar conocimientos técnicos modernos
+practicar arquitectura enterprise
+construir experiencia realista fullstack
+simular entornos corporativos modernos
+
+
+3. Arquitectura General del Sistema
+
+La plataforma estará dividida en:
+
+Frontend Microfrontend Layer
+            ↓
+        REST API
+            ↓
+    Spring Boot Backend
+            ↓
+       PostgreSQL
+
+
+4. Arquitectura Frontend
+
+El frontend será construido utilizando Angular con arquitectura basada en microfrontends mediante Module Federation.
+
+4.1 Enfoque Microfrontend
+
+El sistema utilizará Module Federation para cargar aplicaciones frontend independientes.
+
+Objetivos
+modularización
+desacoplamiento
+separación por dominio
+despliegues independientes
+escalabilidad frontend
+
+4.2 Shell Application
+
+Aplicación principal encargada de:
+navegación
+layout
+autenticación
+carga de microfrontends
+rutas principales
+
+4.3 Microfrontend Customers
+
+Responsable de:
+listado de clientes
+búsqueda
+filtros
+paginación
+creación y edición de registros
+
+4.4 Microfrontend Imports
+
+Responsable de:
+carga de archivos CSV
+visualización de resultados
+historial de importaciones
+visualización de errores
+
+4.5 Microfrontend Audit
+Responsable de:
+
+visualización de logs
+auditoría de acciones
+filtros de actividad
+
+
+5. Arquitectura Backend
+
+La API backend será desarrollada utilizando Spring Boot.
+Arquitectura en Capas
+
+Controller
+↓
+Service
+↓
+Repository
+↓
+Database
+
+
+6. Estructura del Proyecto
+6.1 Estructura Backend
+backend
+│
+└── src/main/java/com/bulkprocessingapi
+    │
+    ├── auth
+    ├── customer
+    ├── importer
+    ├── audit
+    ├── security
+    ├── config
+    ├── dto
+    ├── exception
+    ├── repository
+    ├── service
+    └── util
+
+6.2 Estructura Frontend
+frontend
+│
+├── shell
+│
+├── mfe-customers
+│
+├── mfe-imports
+│
+└── mfe-audit
+
+7. Tecnologías Utilizadas
+
+7.1 Backend
+Tecnología		Propósito
+Java 21	Lenguaje 	principal
+Spring Boot 3.5		Framework backend
+Spring Security		Seguridad
+JWT			Autenticación
+Spring Data JPA		Persistencia
+Hibernate		Mapeo Objeto-Relacional (ORM)
+Flyway			Migraciones
+Swagger/OpenAPI		Documentación
+Docker			Contenedores
+Maven			Dependencias
+Lombok			Reducción boilerplate
+YAML			Configuración del sistema
+
+7.2 Frontend
+Tecnología		Propósito
+Angular			Framework frontend
+Module Federation	Microfrontends
+Angular Router		Navegación
+RxJS			Programación reactiva
+Angular HttpClient	Consumo API
+Angular Material	Componentes UI
+
+7.3 Base de Datos
+
+Motor
+PostgreSQL
+
+Tablas Principales
+users
+roles
+customers
+imports
+import_errors
+audit_logs
+
+Características SQL
+relaciones entre entidades
+índices
+paginación
+migraciones versionadas
+consultas optimizadas
+
+7.4 Herramientas de Desarrollo
+
+Herramienta		        Propósito
+IntelliJ IDEA Community		Desarrollo backend Spring Boot
+VSCode			        Desarrollo frontend Angular
+Postman			        Pruebas API
+Docker Desktop		        Contenedores y PostgreSQL
+Git			        Control de versiones
+GitHub			        Repositorio remoto
+
+
+8. Funcionalidades del Sistema
+
+8.1 Funcionalidades Backend
+Autenticación y Seguridad
+login JWT
+refresh token
+autorización por roles
+protección de endpoints
+cifrado BCrypt
+Gestión de Clientes
+crear clientes
+editar clientes
+eliminación lógica
+paginación
+filtros dinámicos
+búsqueda
+Procesamiento Masivo
+carga CSV
+validación fila por fila
+detección de duplicados
+procesamiento parcial
+reporte de errores
+Auditoría
+
+Registro de:
+
+logins
+importaciones
+creación de registros
+modificaciones
+eliminaciones
+
+8.2 Funcionalidades Frontend
+Shell Application
+navegación principal
+carga dinámica de microfrontends
+layout principal
+autenticación de usuarios
+manejo de rutas
+Microfrontend Customers
+listado de clientes
+filtros dinámicos
+paginación
+formularios de creación y edición
+consumo de API REST
+Microfrontend Imports
+carga de archivos CSV
+visualización de resultados
+historial de importaciones
+visualización de errores
+Microfrontend Audit
+visualización de logs
+filtros de actividad
+monitoreo de acciones del sistema
+
+
+9. Endpoints Principales
+
+9.1 Auth
+POST /api/auth/login
+POST /api/auth/refresh
+
+9.2 Customers
+GET    /api/customers
+POST   /api/customers
+PUT    /api/customers/{id}
+DELETE /api/customers/{id}
+
+9.3 Imports
+POST /api/import/customers
+GET  /api/import/history
+
+9.4 Audit
+GET /api/audit
+
+
+10. Seguridad
+
+La plataforma implementará:
+
+JWT Authentication
+autorización basada en roles
+BCrypt Password Encoding
+DTO Validation
+Protected Routes
+CORS Configuration
+
+
+11. Procesamiento Masivo de Datos
+
+La plataforma permitirá:
+
+importar archivos CSV
+procesar miles de registros
+validar datos automáticamente
+detectar registros inválidos
+generar reportes de errores
+Validaciones
+
+Ejemplos:
+
+email válido
+campos obligatorios
+duplicados
+formato inválido
+estados incorrectos
+
+
+12. Características Técnicas
+
+12.1 Backend
+arquitectura limpia
+separación de responsabilidades
+manejo centralizado de errores
+persistencia con JPA/Hibernate
+documentación Swagger
+
+12.2 Frontend
+lazy loading
+microfrontends
+rutas desacopladas
+componentes reutilizables
+consumo modular de APIs
+
+
+13. Resultado Esperado
+
+Construir una plataforma fullstack profesional capaz de:
+
+autenticar usuarios
+procesar datos masivos
+validar información
+mantener trazabilidad
+modularizar frontend mediante microfrontends
+documentar APIs correctamente
+demostrar arquitectura moderna fullstack
+
