@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: bulk_processing_postgres
+    environment:
+      POSTGRES_DB: bulk_processing_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - bulk_processing_data:/var/lib/postgresql/data
+
+volumes:
+  bulk_processing_data:
