@@ -82,6 +82,7 @@ crear Controller
 implementar CRUD inicial
 configurar Swagger/OpenAPI
 probar endpoints desde Swagger o Postman
+
 Entregables
 backend levantado correctamente
 base de datos PostgreSQL conectada
@@ -105,6 +106,7 @@ crear menú de navegación
 crear rutas iniciales
 preparar estructura para cargar microfrontends
 crear pantalla inicial temporal
+
 Entregables
 Shell Angular funcionando
 layout principal creado
@@ -125,6 +127,7 @@ implementar refresh token
 cifrar contraseñas con BCrypt
 crear roles base
 proteger endpoints
+
 Tareas Frontend
 crear pantalla login
 consumir endpoint de autenticación
@@ -132,6 +135,7 @@ guardar token
 manejar sesión
 proteger rutas frontend
 agregar logout
+
 Entregables
 login funcional
 JWT generado correctamente
@@ -155,6 +159,7 @@ consumir endpoint GET /api/customers
 implementar filtros
 implementar paginación
 crear formularios de creación y edición
+
 Entregables
 microfrontend cargado desde Shell
 listado de clientes funcional
@@ -178,6 +183,7 @@ procesar registros válidos
 registrar registros inválidos
 crear historial de importaciones
 generar resumen del procesamiento
+
 Entregables
 endpoint de carga CSV funcional
 validación por fila implementada
@@ -200,6 +206,7 @@ consumir endpoint de importación
 mostrar resumen de procesamiento
 mostrar historial de importaciones
 mostrar errores de carga
+
 Entregables
 microfrontend Imports funcionando
 carga CSV desde frontend
@@ -223,6 +230,7 @@ registrar modificación de clientes
 registrar eliminación lógica
 registrar importaciones
 crear endpoint de consulta de auditoría
+
 Entregables
 tabla de auditoría creada
 logs registrados automáticamente
@@ -243,6 +251,7 @@ consumir endpoint GET /api/audit
 crear tabla de logs
 implementar filtros de actividad
 mostrar usuario, acción y fecha
+
 Entregables
 microfrontend Audit funcionando
 logs visibles desde frontend
@@ -266,6 +275,7 @@ preparar README
 preparar capturas
 probar carga CSV real
 revisar errores principales
+
 Entregables
 sistema fullstack funcionando
 backend integrado con frontend
