@@ -6,7 +6,7 @@ API de Procesamiento Masivo de Datos
 Línea de Tiempo General
 Fase	Actividad			Duración Estimada	Dependencia		Día		Estado
 Fase 1	Backend Foundation		1 a 2 días		Inicio del proyecto	12-05		COMPLETADA
-Fase 2	Frontend Shell			1 día			Fase 1
+Fase 2	Frontend Shell			1 día			Fase 1			12-05		COMPLETADA
 Fase 3	Seguridad y Autenticación	1 a 2 días		Fase 1 y 2
 Fase 4	Microfrontend Customers		2 días			Fase 2 y 3
 Fase 5	Procesamiento Masivo CSV	1 a 2 días		Fase 1 y 3

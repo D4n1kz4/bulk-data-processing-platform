@@ -100,7 +100,6 @@ Crear la aplicación principal Angular que actuará como contenedor de los micro
 Tareas
 crear proyecto Angular Shell
 configurar Angular Router
-configurar Angular Material
 crear layout principal
 crear menú de navegación
 crear rutas iniciales

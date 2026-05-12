@@ -186,7 +186,7 @@ Module Federation	Microfrontends
 Angular Router		Navegación
 RxJS			Programación reactiva
 Angular HttpClient	Consumo API
-Angular Material	Componentes UI
+Tailwind CSS            Estilos y diseño de interfaz
 
 7.3 Base de Datos
 
