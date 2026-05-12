@@ -1,0 +1,27 @@
+# IntelliJ
+.idea/
+
+# Maven
+target/
+
+# Logs
+*.log
+
+# Environment
+.env
+
+# Node
+node_modules/
+
+# Docker
+postgres_data/
+
+# Build
+dist/
+build/
+
+# Java
+*.class
+
+# VSCode
+.vscode/
