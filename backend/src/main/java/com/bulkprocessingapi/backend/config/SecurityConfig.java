@@ -1,46 +1,65 @@
 package com.bulkprocessingapi.backend.config;
 
-// Importaciones necesarias para Spring Security
+import com.bulkprocessingapi.backend.auth.JwtAuthenticationFilter;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 
+import org.springframework.security.config.http.SessionCreationPolicy;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.security.web.SecurityFilterChain;
 
-/*
-    @Configuration
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-    Indica que esta clase contiene configuraciones Spring.
-*/
 @Configuration
 public class SecurityConfig {
 
-    /*
-        SecurityFilterChain
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
-        Configura las reglas de seguridad de la aplicación.
-    */
+    public SecurityConfig(
+            JwtAuthenticationFilter jwtAuthenticationFilter
+    ) {
+        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+    }
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http
 
-                /*
-                    Desactiva CSRF temporalmente.
-
-                    Lo hacemos para facilitar pruebas REST
-                    durante el desarrollo inicial.
-                 */
                 .csrf(csrf -> csrf.disable())
 
-                /*
-                    Permite acceso libre a todos los endpoints.
-                 */
+                .sessionManagement(session ->
+                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                )
+
                 .authorizeHttpRequests(auth -> auth
-                        .anyRequest().permitAll()
+
+                        .requestMatchers(
+                                "/api/auth/**",
+                                "/swagger-ui/**",
+                                "/v3/api-docs/**"
+                        ).permitAll()
+                        .requestMatchers("/api/customers/**").hasRole("ADMIN")
+
+                        .anyRequest().authenticated()
+                )
+
+                .addFilterBefore(
+                        jwtAuthenticationFilter,
+                        UsernamePasswordAuthenticationFilter.class
                 );
 
         return http.build();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }

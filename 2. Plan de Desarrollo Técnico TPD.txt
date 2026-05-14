@@ -4,18 +4,18 @@ API de Procesamiento Masivo de Datos
 (Bulk Data Processing Platform)
 
 ÍNDICE
-Objetivo del Documento
-Estrategia General de Desarrollo
-Fases del Proyecto
-Fase 1: Backend Foundation
-Fase 2: Frontend Shell
-Fase 3: Seguridad y Autenticación
-Fase 4: Microfrontend Customers
-Fase 5: Procesamiento Masivo CSV
-Fase 6: Microfrontend Imports
-Fase 7: Auditoría
-Fase 8: Microfrontend Audit
-Fase 9: Integración Final
+1. Objetivo del Documento
+2. Estrategia General de Desarrollo
+3. Fases del Proyecto
+4. Fase 1: Backend Foundation
+5. Fase 2: Frontend Shell
+6. Fase 3: Seguridad y Autenticación
+7. Fase 4: Microfrontend Customers
+8. Fase 5: Procesamiento Masivo CSV
+9. Fase 6: Microfrontend Imports
+10. Fase 7: Auditoría
+11. Fase 8: Microfrontend Audit
+12. Fase 9: Integración Final
 
 
 1. Objetivo del Documento
