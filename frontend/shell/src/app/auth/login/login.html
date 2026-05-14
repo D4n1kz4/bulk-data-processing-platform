@@ -1,0 +1,74 @@
+<div class="app-page-background">
+
+  <div class="absolute inset-0 opacity-20">
+    <div class="absolute top-24 left-24 h-72 w-72 rounded-full bg-blue-500 blur-3xl"></div>
+    <div class="absolute bottom-24 right-24 h-72 w-72 rounded-full bg-cyan-400 blur-3xl"></div>
+  </div>
+
+  <div class="app-card">
+
+    <div class="mb-8 text-center">
+
+      <div class="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-900 text-white shadow-lg">
+        <span class="text-xl font-bold">DO</span>
+      </div>
+
+      <h1 class="text-3xl font-extrabold tracking-tight text-slate-900">
+        Bulk Data Platform
+      </h1>
+
+      <p class="mt-2 text-sm text-slate-500">
+        Enterprise Authentication Portal
+      </p>
+
+    </div>
+
+    <form
+      class="space-y-5"
+      (ngSubmit)="onLogin()"
+    >
+
+      <div>
+        <label class="mb-2 block text-sm font-semibold text-slate-700">
+          Username
+        </label>
+
+        <input
+          type="text"
+          placeholder="Enter username"
+          [(ngModel)]="username"
+          name="username"
+          class="app-input"
+        />
+      </div>
+
+      <div>
+        <label class="mb-2 block text-sm font-semibold text-slate-700">
+          Password
+        </label>
+
+        <input
+          type="password"
+          placeholder="Enter password"
+          [(ngModel)]="password"
+          name="password"
+          class="app-input"
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="app-button-primary"
+      >
+        Login
+      </button>
+
+    </form>
+
+    <p class="mt-6 text-center text-xs text-slate-400">
+      Secured with JWT Authentication
+    </p>
+
+  </div>
+
+</div>

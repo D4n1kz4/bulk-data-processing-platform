@@ -1,3 +1,36 @@
-/* You can add global styles to this file, and also import other style files */
 
 @import 'tailwindcss';
+
+@layer components {
+
+  .app-page-background {
+    @apply min-h-screen flex items-center justify-center px-4;
+
+    background:
+      radial-gradient(
+        circle at top left,
+        #1e3a8a 0,
+        #0f172a 35%,
+        #020617 100%
+      );
+  }
+
+  .app-card {
+    @apply relative w-full max-w-md rounded-3xl border border-white/5
+    bg-slate-100/90 p-8 shadow-2xl backdrop-blur;
+  }
+
+  .app-input {
+    @apply w-full rounded-2xl border border-slate-300
+    bg-slate-100/95 px-4 py-3 text-slate-800 outline-none transition
+    focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-500/10;
+  }
+
+  .app-button-primary {
+    @apply w-full rounded-2xl bg-slate-900 py-3.5 font-semibold text-white
+    shadow-lg shadow-slate-900/20 transition
+    hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-blue-700/30
+    active:translate-y-0;
+  }
+
+}

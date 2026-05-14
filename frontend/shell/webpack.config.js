@@ -3,14 +3,21 @@ const {
   withModuleFederationPlugin,
 } = require('@angular-architects/module-federation/webpack');
 
-module.exports = withModuleFederationPlugin({
-  name: 'shell',
+module.exports = {
+  ...withModuleFederationPlugin({
+    name: 'shell',
 
-  exposes: {
-  './Component': './src/app/app.ts',
-  },
+    exposes: {
+      './Component': './src/app/app.ts',
+    },
 
-  shared: {
-    ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),
+    shared: {
+      ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),
+    },
+  }),
+
+  output: {
+    publicPath: 'auto',
+    scriptType: 'text/javascript',
   },
-});
+};

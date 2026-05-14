@@ -7,4 +7,25 @@
   <div class="text-sm text-slate-300">
     Backend API: Spring Boot
   </div>
+
+  <button
+    type="button"
+    (click)="openLogoutModal()"
+    class="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg text-sm transition"
+  >
+    Logout
+  </button>
+
 </header>
+
+
+@if (showLogoutModal) {
+  <app-confirm-modal
+    title="Confirm logout"
+    message="Are you sure you want to close your session?"
+    confirmText="Logout"
+    cancelText="Cancel"
+    (confirm)="confirmLogout()"
+    (cancel)="cancelLogout()"
+  />
+}
