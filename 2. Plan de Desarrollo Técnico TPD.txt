@@ -122,26 +122,38 @@ Tareas Backend
 configurar Spring Security
 implementar login
 generar JWT
-implementar refresh token
+validar expiración de tokens
+integrar filtro JWT
 cifrar contraseñas con BCrypt
-crear roles base
-proteger endpoints
+crear roles base (ADMIN, USER)
+proteger endpoints mediante roles
+configurar CORS para integración frontend
+integrar Swagger con seguridad
 
 Tareas Frontend
-crear pantalla login
+crear pantalla login premium con TailwindCSS
 consumir endpoint de autenticación
-guardar token
-manejar sesión
-proteger rutas frontend
-agregar logout
+guardar token JWT en localStorage
+manejar sesión frontend
+validar expiración de JWT
+proteger rutas frontend con Guards
+implementar HTTP Interceptor
+agregar logout con modal reutilizable
+crear componente reutilizable ConfirmModal
+implementar arquitectura reutilizable Tailwind (@layer components)
+manejar redirección automática ante 401/403
 
 Entregables
-login funcional
-JWT generado correctamente
-endpoints protegidos
-rutas frontend protegidas
-sesión básica operativa
-
+login funcional Angular + Spring Boot
+JWT generado y validado correctamente
+endpoints protegidos con Spring Security
+rutas frontend protegidas con Guards
+interceptor JWT operativo
+manejo automático de sesión inválida
+logout funcional con modal personalizado
+sistema base reusable UI implementado
+arquitectura frontend enterprise-ready
+sesión operativa con expiración validada
 
 7. Fase 4: Microfrontend Customers
 Objetivo

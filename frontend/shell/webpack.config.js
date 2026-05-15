@@ -7,8 +7,8 @@ module.exports = {
   ...withModuleFederationPlugin({
     name: 'shell',
 
-    exposes: {
-      './Component': './src/app/app.ts',
+    remotes: {
+      mfeCustomers: 'http://localhost:4201/remoteEntry.js',
     },
 
     shared: {

@@ -18,7 +18,11 @@ export const routes: Routes = [
     canActivate: [authGuard],
     children: [
       { path: '', component: Home },
-      { path: 'customers', component: Customers },
+      {
+        path: 'customers',
+        loadComponent: () =>
+          import('mfeCustomers/Component').then(m => m.App)
+      },
       { path: 'imports', component: Imports },
       { path: 'audit', component: Audit }
     ]

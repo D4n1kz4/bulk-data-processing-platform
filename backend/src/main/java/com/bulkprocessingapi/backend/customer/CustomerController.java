@@ -4,7 +4,7 @@ package com.bulkprocessingapi.backend.customer;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+import org.springframework.http.ResponseEntity;
 /*
     @RestController
 
@@ -56,9 +56,10 @@ public class CustomerController {
         return customerService.createCustomer(customer);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteCustomer(@PathVariable Long id) {
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteCustomer(@PathVariable Long id) {
         customerService.deleteCustomer(id);
+        return ResponseEntity.noContent().build();
     }
 }

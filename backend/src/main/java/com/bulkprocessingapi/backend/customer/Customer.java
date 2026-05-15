@@ -1,7 +1,4 @@
 package com.bulkprocessingapi.backend.customer;
-
-// Importa todas las anotaciones JPA necesarias
-// para mapear esta clase hacia PostgreSQL.
 import jakarta.persistence.*;
 
 /*
@@ -13,53 +10,19 @@ import jakarta.persistence.*;
 */
 @Entity
 
-/*
-    @Table(name = "customers")
-
-    Define explícitamente el nombre de la tabla SQL.
-*/
 @Table(name = "customers")
 public class Customer {
-
-    /*
-        @Id
-
-        Define la llave primaria de la tabla.
-    */
     @Id
-
-    /*
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-        Hace que PostgreSQL genere automáticamente
-        el ID autoincremental.
-    */
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    // Nombre del cliente
     private String firstName;
-
-    // Apellido del cliente
     private String lastName;
-
-    // Correo electrónico del cliente
     private String email;
+    private boolean deleted = false;
 
-    /*
-        Constructor vacío obligatorio para JPA/Hibernate.
-
-        Hibernate necesita este constructor para
-        crear objetos automáticamente desde la base de datos.
-    */
     public Customer() {
     }
 
-    /*
-        Constructor completo.
-
-        Permite crear objetos Customer manualmente.
-    */
     public Customer(Long id, String firstName, String lastName, String email) {
         this.id = id;
         this.firstName = firstName;
@@ -105,5 +68,12 @@ public class Customer {
     // Setter del email
     public void setEmail(String email) {
         this.email = email;
+    }public boolean isDeleted() {
+        return deleted;
     }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
 }

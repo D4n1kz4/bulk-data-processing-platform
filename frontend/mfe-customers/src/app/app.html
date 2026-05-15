@@ -1,0 +1,269 @@
+<section class="customers-page">
+  <header class="customers-header">
+    <div>
+      <h2>Customers</h2>
+      <p>Manage customer records from the Customers microfrontend.</p>
+    </div>
+
+    <button
+      class="primary-button"
+      type="button"
+      (click)="openCreateForm()"
+    >
+      New Customer
+    </button>
+  </header>
+
+  <div class="customers-card">
+    <div class="card-toolbar">
+      <div>
+        <h3>Customer List</h3>
+        <p>Connected to Spring Boot backend API.</p>
+      </div>
+
+      <div class="search-box">
+        <span>Search</span>
+        <input
+          type="text"
+          placeholder="Name or email..."
+          [(ngModel)]="searchTerm"
+          name="searchTerm"
+        />
+      </div>
+    </div>
+
+    @if (loading) {
+      <div class="loading-state">Loading customers...</div>
+    } @else {
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            @for (customer of paginatedCustomers; track customer.id) {
+              <tr>
+                <td>{{ customer.id }}</td>
+                <td>{{ customer.firstName }}</td>
+                <td>{{ customer.lastName }}</td>
+                <td>{{ customer.email }}</td>
+                <td class="actions-cell">
+                  <button
+                    type="button"
+                    class="table-action-button"
+                    (click)="openEditForm(customer)"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    type="button"
+                    class="table-delete-button"
+                    (click)="openDeleteModal(customer)"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            } @empty {
+              <tr>
+                <td colspan="4" class="empty-state">No customers found.</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+      <div class="pagination-container">
+
+        <button
+          type="button"
+          class="pagination-button"
+          (click)="previousPage()"
+          [disabled]="currentPage === 1"
+        >
+          Previous
+        </button>
+
+        <span class="pagination-info">
+          Page {{ currentPage }} of {{ totalPages || 1 }}
+        </span>
+
+        <button
+          type="button"
+          class="pagination-button"
+          (click)="nextPage()"
+          [disabled]="currentPage === totalPages || totalPages === 0"
+        >
+          Next
+        </button>
+
+      </div>
+    }
+
+    @if (showForm) {
+      <div class="modal-overlay">
+
+        <div class="customer-modal">
+
+          <div class="modal-header">
+            <div>
+              <h3>
+                {{ editingCustomer ? 'Edit Customer' : 'New Customer' }}
+              </h3>
+
+              <p>
+                Complete the customer information.
+              </p>
+            </div>
+
+            <button
+              type="button"
+              class="modal-close"
+              (click)="closeForm()"
+            >
+              ×
+            </button>
+          </div>
+
+          <form class="customer-form"
+            (submit)="$event.preventDefault()"
+            (ngSubmit)="saveCustomer()"
+          >
+
+            <div class="form-field">
+              <label>First Name</label>
+              <input
+                type="text"
+                [(ngModel)]="formData.firstName"
+                name="firstName"
+                placeholder="Enter first name"
+              />
+              @if (formData.firstName.trim() && formData.firstName.trim().length < 2) {
+                <small class="form-error">First name must have at least 2 characters.</small>
+              }
+            </div>
+
+            <div class="form-field">
+              <label>Last Name</label>
+              <input
+                type="text"
+                [(ngModel)]="formData.lastName"
+                name="lastName"
+                placeholder="Enter last name"
+              />
+              @if (formData.lastName.trim() && formData.lastName.trim().length < 2) {
+                <small class="form-error">Last name must have at least 2 characters.</small>
+              }
+            </div>
+
+            <div class="form-field">
+              <label>Email</label>
+              <input
+                type="email"
+                [(ngModel)]="formData.email"
+                name="email"
+                placeholder="Enter email"
+              />
+              @if (formData.email.trim() && !isEmailValid(formData.email)) {
+                <small class="form-error">Enter a valid email address.</small>
+              }
+            </div>
+
+            <div class="modal-actions">
+              <button
+                type="button"
+                class="secondary-button"
+                (click)="closeForm()"
+              >
+                Cancel
+              </button>
+
+              <button
+                type="submit"
+                class="primary-button"
+                [disabled]="!canSaveCustomer"
+              >
+                 {{ saving ? 'Saving...' : 'Save Customer' }}
+              </button>
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+    }
+  </div>
+
+  @if (showDeleteModal && customerToDelete) {
+    <div class="modal-overlay">
+
+      <div class="customer-modal">
+
+        <div class="modal-header">
+          <div>
+            <h3>Archive customer</h3>
+
+            <p>
+              This action will hide the customer from the active list without deleting historical data.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            class="modal-close"
+            (click)="cancelDelete()"
+          >
+            ×
+          </button>
+        </div>
+
+        <div class="delete-warning">
+          <strong>
+            {{ customerToDelete.firstName }} {{ customerToDelete.lastName }}
+          </strong>
+
+          <span>
+            {{ customerToDelete.email }}
+          </span>
+        </div>
+
+        <div class="modal-actions">
+          <button
+            type="button"
+            class="secondary-button"
+            (click)="cancelDelete()"
+          >
+            Cancel
+          </button>
+
+          <button
+            type="button"
+            class="danger-button"
+            (click)="confirmDelete()"
+          >
+            Archive Customer
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  }
+
+  @if (showToast) {
+    <div
+      class="toast"
+      [class.toast-success]="toastType === 'success'"
+      [class.toast-error]="toastType === 'error'"
+    >
+      {{ toastMessage }}
+    </div>
+  }
+</section>

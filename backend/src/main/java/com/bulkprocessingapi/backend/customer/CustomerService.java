@@ -31,7 +31,7 @@ public class CustomerService {
     }
 
     public List<Customer> getCustomers() {
-        return customerRepository.findAll();
+        return customerRepository.findByDeletedFalse();
     }
 
     public Customer getCustomerById(Long id) {
@@ -57,9 +57,12 @@ public class CustomerService {
 
     public void deleteCustomer(Long id) {
 
-        Customer existingCustomer = customerRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Customer not found with id: " + id));
+        Customer customer = customerRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Customer not found"));
 
-        customerRepository.delete(existingCustomer);
+        customer.setDeleted(true);
+
+        customerRepository.save(customer);
     }
+
 }

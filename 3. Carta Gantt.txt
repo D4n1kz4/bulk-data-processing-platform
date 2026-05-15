@@ -5,10 +5,10 @@ API de Procesamiento Masivo de Datos
 
 Línea de Tiempo General
 Fase	Actividad			Duración Estimada	Dependencia		Día		Estado
-Fase 1	Backend Foundation		1 a 2 días		Inicio del proyecto	12-05		COMPLETADA
+Fase 1	Backend Foundation		1 día			Inicio del proyecto	12-05		COMPLETADA
 Fase 2	Frontend Shell			1 día			Fase 1			12-05		COMPLETADA
-Fase 3	Seguridad y Autenticación	1 a 2 días		Fase 1 y 2
-Fase 4	Microfrontend Customers		2 días			Fase 2 y 3
+Fase 3	Seguridad y Autenticación	1 día			Fase 1 y 2		13-05		COMPLETADA
+Fase 4	Microfrontend Customers		1 días			Fase 2 y 3		14-05		COMPLETADA
 Fase 5	Procesamiento Masivo CSV	1 a 2 días		Fase 1 y 3
 Fase 6	Microfrontend Imports		1 día			Fase 5
 Fase 7	Auditoría Backend		1 día			Fase 1
@@ -19,7 +19,7 @@ Fase 9	Integración Final		1 a 2 días		Todas las anteriores
 Tiempo Total Estimado
 
 MVP Técnico Funcional
-10 a 14 días aproximadamente.
+10 a 12 días aproximadamente.
 
 Consideraciones
 
